@@ -17,7 +17,7 @@ def main(url):
     with open(file_path, 'w', encoding='utf-8') as json_file:
         json.dump(data, json_file, ensure_ascii=False)
 
-    print(f"JSON data has been written to '{file_path}'")
+    print(json.dumps(data, ensure_ascii=False))
 
 
 if __name__ == "__main__":
