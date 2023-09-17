@@ -2,11 +2,11 @@
 from AlibabaCrawler import AlibabaCrawler
 from DataExtractor import DataExtractor
 import json
+import sys
 
 
-def main():
-    alibaba_crawler = AlibabaCrawler(
-        "https://www.alibaba.ir/bus/AZD-IFN?departing=1402-06-27")
+def main(url):
+    alibaba_crawler = AlibabaCrawler(url)
     page_source = alibaba_crawler.crawl()
 
     data_extractor = DataExtractor(page_source)
@@ -21,4 +21,11 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) != 4:
+        print("Usage: python main.py ARG1 ARG2 ARG3")
+        sys.exit(1)
+    src = sys.argv[1]
+    dest = sys.argv[2]
+    date = sys.argv[3]
+    url = f"https://www.alibaba.ir/bus/{src}-{dest}?departing={date}"
+    main(url)
