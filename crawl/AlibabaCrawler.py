@@ -7,7 +7,7 @@ import time
 class AlibabaCrawler:
     def __init__(self, url):
         self.url = url
-        # chromedriver_autoinstaller.install()
+        chromedriver_autoinstaller.install()
 
     def crawl(self):
         driver = webdriver.Chrome()
